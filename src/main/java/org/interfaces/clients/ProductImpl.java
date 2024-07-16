@@ -1,10 +1,9 @@
 package org.interfaces.clients;
 
 import org.conexion.ConnexionBD;
-import org.entity.Buy;
 import org.entity.ProductList;
 import org.excepetion.ExceptionCompras;
-import org.interfaces.OptionMenu;
+import org.interfaces.Product;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,7 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-public class Prodcutoimplements OptionMenu {
+public class ProductImpl implements Product {
 
     @Override
     public void insertProduct(ProductList pr) {

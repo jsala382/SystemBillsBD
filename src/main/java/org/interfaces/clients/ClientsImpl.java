@@ -6,9 +6,11 @@ import org.entity.Clients;
 import org.excepetion.ExceptionCompras;
 import org.interfaces.CustomerData;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Scanner;
-import java.util.SortedMap;
 
 public class ClientsImpl implements CustomerData {
     Scanner inputDataClient = new Scanner(System.in);
@@ -38,6 +40,8 @@ public class ClientsImpl implements CustomerData {
             clients.setPhoneNumber(phoneNumberClient);
             clients.setEmail(eMail);
             saveClients(clients);
+        } else {
+            System.out.println("Cleinte ya existe en la Base");
         }
 
         return clients;
@@ -95,7 +99,7 @@ public class ClientsImpl implements CustomerData {
         try {
             Connection connection = ConnexionBD.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("select * from db_factura.clientes ");
-            ;
+
             ResultSet result = preparedStatement.executeQuery();
             while (result.next()) {
                 System.out.print(result.getInt("id"));
