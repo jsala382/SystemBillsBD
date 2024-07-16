@@ -5,7 +5,6 @@ import org.entity.BuyList;
 import org.entity.ProductList;
 import org.interfaces.clients.BillsImpl;
 import org.interfaces.clients.ClientsImpl;
-import org.interfaces.clients.ProductImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,8 +24,8 @@ public class Main {
         bills.inputBuy( getProduct,  code);
         bills.addElininateProducto();*/
         //clienteImpl.inputCustomerData();
-
         optionMenu.viewMenuOption();
+
 
 
 
