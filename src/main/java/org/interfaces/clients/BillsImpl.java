@@ -94,7 +94,7 @@ public class BillsImpl extends ClientsImpl implements Bills {
     }
 
     @Override
-    public BuyList validateBuysNew(String code) {
+    public BuyList  validateBuysNew(String code) {
         System.out.print("\nEscoja codigo el producto: ");
         code = input.next();
         BuyList getProduct = getBuyByCode(code);

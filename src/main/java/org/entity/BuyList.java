@@ -5,6 +5,16 @@ public class BuyList {
     public  String code;
     public int amount;
     public double price;
+    public int id;
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getNameProducto() {
         return nameProduct;

@@ -3,18 +3,27 @@ package org.view;
 import org.entity.Clients;
 import org.entity.ProductList;
 import org.interfaces.clients.ClientsImpl;
+import org.interfaces.clients.SalesNotes;
 import org.interfaces.clients.ProductImpl;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class OptionMenu {
-    public void viewMenuOption() {
+    public void viewMenuOption() throws SQLException {
         ProductImpl prodcutoBdImple = new ProductImpl();
         Scanner input = new Scanner(System.in);
         ClientsImpl clientsImpl = new ClientsImpl();
         String identification = "";
         Clients clients;
         ProductList pr = new ProductList();
+        SalesNotes factura=new SalesNotes();
+        String codeProd;
+        int inventary=0;
+
+
+
+
         while (true) {
             System.out.println("FCTURAR (1) / PRODUCTOS (2) /  CLIENTES (3)");
             System.out.println("Ingrese una opcion:");
@@ -23,6 +32,9 @@ public class OptionMenu {
                 case 0:
                     break;
                 case 1:
+                    System.out.println("Escpja el codigo del producto");
+                    codeProd=input.next();
+                    factura.buyList(codeProd);
                     break;
                 case 2:
                     System.out.println("Para agregar un producto presion \'A\", para eliminar un producto presione \'E\" para actualizar presione \'U\' ");

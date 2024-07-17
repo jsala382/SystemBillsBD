@@ -6,11 +6,12 @@ import org.entity.ProductList;
 import org.interfaces.clients.BillsImpl;
 import org.interfaces.clients.ClientsImpl;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         ClientsImpl clienteImpl= new ClientsImpl();
         OptionMenu optionMenu=new OptionMenu();
         List<ProductList> productList = new ArrayList<>();
@@ -25,9 +26,6 @@ public class Main {
         bills.addElininateProducto();*/
         //clienteImpl.inputCustomerData();
         optionMenu.viewMenuOption();
-
-
-
 
 
 
