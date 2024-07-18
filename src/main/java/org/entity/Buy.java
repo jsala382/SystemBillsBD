@@ -2,33 +2,26 @@ package org.entity;
 
 public class Buy {
 
-    private String code;
-    private  String nameProduct;
+    private int id;
+    private  int   idProduct;
     private  double total;
-    private int id_product;
 
-    public int getId_product() {
-        return id_product;
+
+
+    public int getId() {
+        return id;
     }
 
-    public void setId_product(int id_product) {
-        id_product = id_product;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getCode() {
-        return code;
+    public int getIdProduct() {
+        return idProduct;
     }
 
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getNameProduct() {
-        return nameProduct;
-    }
-
-    public void setNameProduct(String nameProduct) {
-        this.nameProduct = nameProduct;
+    public void setIdProduct(int idProduct) {
+        this.idProduct = idProduct;
     }
 
     public double getTotal() {

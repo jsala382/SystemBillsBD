@@ -10,19 +10,28 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.Scanner;
 
 public class ClientsImpl implements CustomerData {
     Scanner inputDataClient = new Scanner(System.in);
 
 
-    public Clients inputCustomerData() {
+    public Clients inputCustomerData(String identificationInput) {
         Clients clients = new Clients();
 
-        System.out.println("Ingrese la identificaiocn");
-        String identificationInput = inputDataClient.nextLine();
         Clients clientFounds = getClientsByIdentification(identificationInput);
-        if (clientFounds.getIdentification() == null) {
+        if (clientFounds.getIdentification() != null) {
+            System.out.print(clientFounds.getIdentification());
+            System.out.print("|");
+            System.out.print(clientFounds.getName());
+            System.out.print("|");
+            System.out.print(clientFounds.getAddress());
+            System.out.print("|");
+            System.out.print(clientFounds.getPhoneNumber());
+            System.out.print("|");
+            System.out.println(clientFounds.getEmail());
+        } else {
             System.out.println("Cliente no encotrado");
             clients.setTypeIdentification("CED");
             clients.setIdentification(identificationInput);
@@ -40,11 +49,9 @@ public class ClientsImpl implements CustomerData {
             clients.setPhoneNumber(phoneNumberClient);
             clients.setEmail(eMail);
             saveClients(clients);
-        } else {
-            System.out.println("Cleinte ya existe en la Base");
         }
 
-        return clients;
+        return clientFounds;
     }
 
 
@@ -90,8 +97,6 @@ public class ClientsImpl implements CustomerData {
             throw new ExceptionCompras("ERROR AL INSERTAR LOD DATOS DEL CLIENTE " + e);
         }
         System.out.println("Datos insertados correctamente");
-
-
     }
 
     @Override
@@ -155,7 +160,20 @@ public class ClientsImpl implements CustomerData {
         } catch (SQLException e) {
             throw new ExceptionCompras("ERROR AL BORRAR UN CLIENTE");
         }
-
-
     }
+
+    @Override
+    public void insertClientinHeadBills(String code, int total, Date fecha) {
+        try {
+            Connection connection = ConnexionBD.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO `db_factura`.`cabecera_factura` (`FECHA`, `TOTAL_FACTURA`, `ID_CLIENTE`) VALUES ('20/01/1981', '1', '1'))");
+            preparedStatement.setDate(1, (java.sql.Date) fecha);
+            preparedStatement.setString(2, code);
+            preparedStatement.setInt(3, total);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new ExceptionCompras("ERROR AL REGISTRAR LA CABECERA" + e);
+        }
+    }
+
 }

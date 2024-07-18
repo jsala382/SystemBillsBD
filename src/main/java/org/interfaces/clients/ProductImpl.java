@@ -1,9 +1,8 @@
 package org.interfaces.clients;
 
 import org.conexion.ConnexionBD;
-import org.entity.ProductList;
+import org.entity.Product;
 import org.excepetion.ExceptionCompras;
-import org.interfaces.Product;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,14 +10,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-public class ProductImpl implements Product {
+public class ProductImpl implements org.interfaces.Product {
 
     @Override
-    public void insertProduct(ProductList pr) {
+    public void insertProduct(Product pr) {
         Scanner input = new Scanner(System.in);
         System.out.println("Ingrese el codigo del producto;");
         String code = input.next();
-        ProductList productFounde = getProductoByCode(code);
+        Product productFounde = getProductoByCode(code);
         if (productFounde.getCode() == null) {
             System.out.println("Ingrese el nombre del producto");
             String name = input.next();
@@ -51,9 +50,9 @@ public class ProductImpl implements Product {
     }
 
     @Override
-    public ProductList getProductoByCode(String code) {
+    public Product getProductoByCode(String code) {
         String sql = "SELECT * FROM db_factura.producto WHERE codigo_producto=? ";
-        ProductList productList = new ProductList();
+        Product productList = new Product();
         try {
             Connection connection = ConnexionBD.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);

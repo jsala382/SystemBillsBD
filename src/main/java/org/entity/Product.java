@@ -1,12 +1,19 @@
 package org.entity;
 
-public class BuyList {
+public class Product {
     public String nameProduct;
     public  String code;
     public int amount;
     public double price;
     public int id;
 
+    public String getNameProduct() {
+        return nameProduct;
+    }
+
+    public void setNameProduct(String nameProduct) {
+        this.nameProduct = nameProduct;
+    }
 
     public int getId() {
         return id;

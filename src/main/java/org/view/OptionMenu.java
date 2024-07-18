@@ -1,9 +1,9 @@
 package org.view;
 
 import org.entity.Clients;
-import org.entity.ProductList;
+import org.entity.Product;
+import org.interfaces.clients.BillsImpl;
 import org.interfaces.clients.ClientsImpl;
-import org.interfaces.clients.SalesNotes;
 import org.interfaces.clients.ProductImpl;
 
 import java.sql.SQLException;
@@ -11,17 +11,16 @@ import java.util.Scanner;
 
 public class OptionMenu {
     public void viewMenuOption() throws SQLException {
+
         ProductImpl prodcutoBdImple = new ProductImpl();
         Scanner input = new Scanner(System.in);
         ClientsImpl clientsImpl = new ClientsImpl();
+        BillsImpl billsImpl=new BillsImpl();
         String identification = "";
         Clients clients;
-        ProductList pr = new ProductList();
-        SalesNotes factura=new SalesNotes();
+        Product pr = new Product();
         String codeProd;
-        int inventary=0;
-
-
+        int inventary = 0;
 
 
         while (true) {
@@ -32,9 +31,9 @@ public class OptionMenu {
                 case 0:
                     break;
                 case 1:
-                    System.out.println("Escpja el codigo del producto");
-                    codeProd=input.next();
-                    factura.buyList(codeProd);
+                    System.out.println("Ingres el identicador: ");
+                    String identificationInput = input.next();
+                    billsImpl.proccesBuy(identificationInput);
                     break;
                 case 2:
                     System.out.println("Para agregar un producto presion \'A\", para eliminar un producto presione \'E\" para actualizar presione \'U\' ");
@@ -62,7 +61,7 @@ public class OptionMenu {
                     char option3 = input.next().charAt(0);
                     switch (option3) {
                         case 'A':
-                            clients = clientsImpl.inputCustomerData();
+                            clients = clientsImpl.inputCustomerData(identification);
                             clientsImpl.saveClients(clients);
                             clientsImpl.getClient();
                             break;

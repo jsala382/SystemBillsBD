@@ -1,8 +1,7 @@
 package org.view;
 
 
-import org.entity.BuyList;
-import org.entity.ProductList;
+import org.entity.Product;
 import org.interfaces.clients.BillsImpl;
 import org.interfaces.clients.ClientsImpl;
 
@@ -14,9 +13,8 @@ public class Main {
     public static void main(String[] args) throws SQLException {
         ClientsImpl clienteImpl= new ClientsImpl();
         OptionMenu optionMenu=new OptionMenu();
-        List<ProductList> productList = new ArrayList<>();
-        BuyList getProduct=new BuyList();
-        BillsImpl bills=  new BillsImpl();
+        List<Product> productList = new ArrayList<>();
+         BillsImpl bills=  new BillsImpl();
         String code="";
 
 
